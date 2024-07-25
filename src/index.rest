@@ -9,3 +9,11 @@ http://localhost:3000/hello/john
 ###
 
 http://localhost:3000/hello/john?mode=shout
+
+###
+
+http://localhost:3000/html
+
+###
+
+http://localhost:3000/jsx
