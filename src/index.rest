@@ -1,0 +1,11 @@
+### rest client - vscode extension
+
+http://localhost:3000
+
+###
+
+http://localhost:3000/hello/john
+
+###
+
+http://localhost:3000/hello/john?mode=shout
