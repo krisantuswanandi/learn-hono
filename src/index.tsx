@@ -1,4 +1,5 @@
 import { Hono } from "hono";
+import { basicAuth } from "hono/basic-auth";
 
 const app = new Hono();
 
@@ -27,6 +28,10 @@ app.get("/jsx", (c) => {
     return <h1>Hello JSX!</h1>;
   }
   return c.html(<View />);
+});
+
+app.get("/admin", basicAuth({ username: "admin", password: "admin" }), (c) => {
+  return new Response("Hello Admin!");
 });
 
 export default app;

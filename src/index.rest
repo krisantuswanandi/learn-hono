@@ -17,3 +17,8 @@ http://localhost:3000/html
 ###
 
 http://localhost:3000/jsx
+
+###
+
+http://localhost:3000/admin
+Authorization: Basic admin:admin
