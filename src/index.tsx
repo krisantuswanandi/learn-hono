@@ -1,9 +1,11 @@
 import { Hono } from "hono";
 import { basicAuth } from "hono/basic-auth";
 import { serveStatic } from "hono/bun";
+import { logger } from "hono/logger";
 import api from "./api";
 
 const app = new Hono();
+app.use(logger());
 
 app.get("/", (c) => {
   return c.text("Hello Hono!");
