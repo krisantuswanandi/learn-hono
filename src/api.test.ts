@@ -8,7 +8,7 @@ test("/", async () => {
 
   res = await app.request("/api", {
     headers: {
-      authorization: "Basic YXBpOmFwaQ==",
+      authorization: `Basic ${btoa("api:api")}`,
     },
   });
   expect(res.status).toBe(200);
@@ -18,7 +18,7 @@ test("/", async () => {
 test("/a", async () => {
   let res = await app.request("/api/a", {
     headers: {
-      authorization: "Basic YXBpOmFwaQ==",
+      authorization: `Basic ${btoa("api:api")}`,
     },
   });
   expect(res.status).toBe(200);
@@ -28,7 +28,7 @@ test("/a", async () => {
 test("/b", async () => {
   let res = await app.request("/api/b", {
     headers: {
-      authorization: "Basic YXBpOmFwaQ==",
+      authorization: `Basic ${btoa("api:api")}`,
     },
   });
   expect(res.status).toBe(200);

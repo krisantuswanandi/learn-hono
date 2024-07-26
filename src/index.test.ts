@@ -58,7 +58,7 @@ test("/admin", async () => {
 
   res = await app.request("/admin", {
     headers: {
-      authorization: "basic YWRtaW46YWRtaW4=",
+      authorization: `Basic ${btoa("admin:admin")}`,
     },
   });
   expect(res.status).toBe(200);
