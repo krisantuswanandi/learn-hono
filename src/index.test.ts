@@ -25,6 +25,16 @@ test("/hello", async () => {
   });
   expect(res.status).toBe(200);
   expect(await res.json()).toEqual({ message: "Hello, John Doe!" });
+
+  res = await app.request("/hello", {
+    method: "PUT",
+    headers: {
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({ first: "John", last: "Doe" }),
+  });
+  expect(res.status).toBe(200);
+  expect(await res.json()).toEqual({ message: "Hello, John Doe!" });
 });
 
 test("/html", async () => {

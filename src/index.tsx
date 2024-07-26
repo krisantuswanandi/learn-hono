@@ -30,6 +30,13 @@ app.post("/hello", async (c) => {
   return c.json({ message: `Hello, ${first} ${last}!` });
 });
 
+app.put("/hello", async (c) => {
+  const body = await c.req.json();
+  const { first, last } = body;
+
+  return c.json({ message: `Hello, ${first} ${last}!` });
+});
+
 app.get("/html", (c) => {
   return c.html("<h1>Hello HTML!</h1>");
 });

@@ -15,6 +15,15 @@ first=john&last=doe
 
 ###
 
+PUT http://localhost:3000/hello
+Content-Type: application/json
+
+{
+  "first": "John",
+  "last": "Doe"
+}
+
+###
 http://localhost:3000/hello/john?mode=shout
 
 ###
