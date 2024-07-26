@@ -1,6 +1,9 @@
 import { Hono } from "hono";
+import { basicAuth } from "hono/basic-auth";
 
 const api = new Hono();
+
+api.use(basicAuth({ username: "api", password: "api" }));
 
 api.get("/", (c) => {
   return c.text("Hello API!");

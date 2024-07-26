@@ -1,11 +1,14 @@
 ### rest client - vscode extension
 
 http://localhost:3000/api
+Authorization: Basic api:api
 
 ###
 
 http://localhost:3000/api/a
+Authorization: Basic api:api
 
 ###
 
 http://localhost:3000/api/b
+Authorization: Basic api:api
