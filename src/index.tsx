@@ -1,6 +1,7 @@
 import { Hono } from "hono";
 import { basicAuth } from "hono/basic-auth";
 import { serveStatic } from "hono/bun";
+import api from "./api";
 
 const app = new Hono();
 
@@ -36,5 +37,7 @@ app.get("/admin", basicAuth({ username: "admin", password: "admin" }), (c) => {
 });
 
 app.get("*", serveStatic({ root: "./static" }));
+
+app.route("/api", api);
 
 export default app;
