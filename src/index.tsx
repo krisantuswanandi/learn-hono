@@ -23,6 +23,13 @@ app.get("/hello/:user", (c) => {
   return c.json({ message });
 });
 
+app.post("/hello", async (c) => {
+  const body = await c.req.parseBody();
+  const { first, last } = body;
+
+  return c.json({ message: `Hello, ${first} ${last}!` });
+});
+
 app.get("/html", (c) => {
   return c.html("<h1>Hello HTML!</h1>");
 });

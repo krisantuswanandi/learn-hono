@@ -7,7 +7,7 @@ test("/", async () => {
   expect(await res.text()).toBe("Hello Hono!");
 });
 
-test("/hello/:user", async () => {
+test("/hello", async () => {
   let res = await app.request("/hello/john");
   expect(res.status).toBe(200);
   expect(await res.json()).toEqual({ message: "Hello, john!" });
@@ -15,6 +15,16 @@ test("/hello/:user", async () => {
   res = await app.request("/hello/john?mode=shout");
   expect(res.status).toBe(200);
   expect(await res.json()).toEqual({ message: "HELLO, JOHN!" });
+
+  res = await app.request("/hello", {
+    method: "POST",
+    headers: {
+      "content-type": "application/x-www-form-urlencoded",
+    },
+    body: new URLSearchParams({ first: "John", last: "Doe" }),
+  });
+  expect(res.status).toBe(200);
+  expect(await res.json()).toEqual({ message: "Hello, John Doe!" });
 });
 
 test("/html", async () => {

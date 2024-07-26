@@ -8,6 +8,13 @@ http://localhost:3000/hello/john
 
 ###
 
+POST http://localhost:3000/hello
+Content-Type: application/x-www-form-urlencoded
+
+first=john&last=doe
+
+###
+
 http://localhost:3000/hello/john?mode=shout
 
 ###
