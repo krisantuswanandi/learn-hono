@@ -16,21 +16,21 @@ test("/hello", async () => {
   expect(res.status).toBe(200);
   expect(await res.json()).toEqual({ message: "HELLO, JOHN!" });
 
+  const formData = new FormData();
+  formData.append("first", "John");
+  formData.append("last", "Doe");
   res = await app.request("/hello", {
     method: "POST",
-    headers: {
-      "content-type": "application/x-www-form-urlencoded",
-    },
-    body: new URLSearchParams({ first: "John", last: "Doe" }),
+    body: formData,
   });
   expect(res.status).toBe(200);
   expect(await res.json()).toEqual({ message: "Hello, John Doe!" });
 
   res = await app.request("/hello", {
     method: "PUT",
-    headers: {
+    headers: new Headers({
       "content-type": "application/json",
-    },
+    }),
     body: JSON.stringify({ first: "John", last: "Doe" }),
   });
   expect(res.status).toBe(200);
