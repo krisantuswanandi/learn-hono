@@ -8,7 +8,15 @@ test("/", async () => {
 });
 
 test("/hello", async () => {
-  let res = await app.request("/hello/john");
+  let res = await app.request("/hello/john1");
+  expect(res.status).toBe(400);
+  expect(await res.text()).toBe("Wrong user format");
+
+  res = await app.request("/hello/john?mode=normal");
+  expect(res.status).toBe(400);
+  expect(await res.text()).toBe("Wrong mode");
+
+  res = await app.request("/hello/john");
   expect(res.status).toBe(200);
   expect(await res.json()).toEqual({ message: "Hello, john!" });
 
